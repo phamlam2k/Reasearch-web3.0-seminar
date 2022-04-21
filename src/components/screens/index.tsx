@@ -19,7 +19,7 @@ const HomeScreen = () => {
 	const [balance, setBalance] = useState<any>(null)
   const val = useRef() as MutableRefObject<HTMLInputElement>;
 	const valReceive = useRef() as MutableRefObject<HTMLInputElement>;
-	const valAmmount = useRef() as MutableRefObject<HTMLInputElement>;
+	const valAmount = useRef() as MutableRefObject<HTMLInputElement>;
   const { transferMoney, getBalanceOf } = useMessage();
 
   const handleSendMessage = () => {
@@ -31,7 +31,7 @@ const HomeScreen = () => {
   };
 
 	const handleTransferMoney = () => {
-		transferMoney(valReceive, valAmmount)
+		transferMoney(valReceive.current.value, valAmount.current.value)
 	}
 
   return (
@@ -61,7 +61,7 @@ const HomeScreen = () => {
 						<div>Input address you want to transfer: </div>
             <input className={style.input} ref={valReceive} />
 						<div>Input value: </div>
-            <input className={style.input} type={'number'} ref={valAmmount} />
+            <input className={style.input} type={'number'} ref={valAmount} />
             <button className={style.btn} onClick={handleTransferMoney}>
               Transfer
             </button>

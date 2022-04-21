@@ -1,6 +1,6 @@
-import { ethers } from "ethers";
 import { useCallback, useEffect, useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ethers } from "ethers";
 import Button from "../../../commons/button";
 import { addAddress } from "../../../hooks/useAddress";
 import { reducer, StateType } from "../../../utils/reducer";
@@ -15,7 +15,7 @@ const initialState: StateType = {
 
 const Header = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const { address: account }: any = useSelector((state) => state);
+  const { address: account }: any = useSelector((state: any) => state);
   const { provider, address, chainId } = state
   const dispatchAddress = useDispatch()
 
