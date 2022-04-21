@@ -1,0 +1,23 @@
+.box {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.input {
+	margin-top: 10px;
+	padding: 10px;
+	font-size: 18px;
+}
+
+.btn {
+	margin-top: 20px;
+	width: 120px;
+	padding: 10px;
+	background-color: aquamarine;
+	border: none;
+	cursor: pointer;
+	border-radius: 10px;
+	font-size: 18px;
+}
