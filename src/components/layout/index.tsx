@@ -1,12 +1,14 @@
-import Header from "./header"
+import HomeScreen from "../screens";
+import Header from "./header";
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomeLayout = () => {
-	return (
-		<div>
-			<Header />
+  return (
+    <div>
+      <Header />
+      <HomeScreen />
+    </div>
+  );
+};
 
-		</div>
-	)
-}
-
-export default HomeLayout
+export default HomeLayout;
