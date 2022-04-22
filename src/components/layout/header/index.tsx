@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import Button from "../../../commons/button";
 import { addAddress } from "../../../hooks/useAddress";
 import { reducer, StateType } from "../../../utils/reducer";

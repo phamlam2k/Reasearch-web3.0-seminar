@@ -15,7 +15,21 @@ const initialState: StateType = {
 const useMessage = () => {
   const { address: account }: any = useSelector((state) => state)
 
-  const contractAddress = "0x00FF229cfABB2601f30c2f95c6e66dcdb3d60dDA";
+  const contractAddress = "0x84F9A6bBbdbf0dF26f713b30fe286c7996A3DEcb";
+
+  const mint = async (address: any ,amount: any) => {
+    try {
+      const contract = new ethers.Contract(contractAddress, contractABI, account?.library?.getSigner());
+  
+      await contract
+        ?.mint(address, amount)
+        .then((res: any) => {
+          console.log(res);
+        });
+    } catch (err) {
+
+    }
+  }
 
   const getBalanceOf = async (addressInput: string) => {
     try{
@@ -23,7 +37,7 @@ const useMessage = () => {
   
       const data = await contract?.balanceOf(addressInput);
       
-      console.log('Balance: ', BigNumber.from(data._hex).toString())
+      return BigNumber.from(data._hex).toString()
 
     } catch (err) {
       console.log(err)
@@ -34,8 +48,20 @@ const useMessage = () => {
     try {
       const contract = new ethers.Contract(contractAddress, contractABI, account?.library?.getSigner());
   
+      const data = await contract?.transfer(address, parseEther(String(number)))
+
+      return data
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  const approveToken = async (address: any, number: any) => {
+    try {
+      const contract = new ethers.Contract(contractAddress, contractABI, account?.library?.getSigner());
+  
       await contract
-        ?.transfer(address, parseEther(String(number)))
+        ?.approval(address, parseEther(String(number)))
         .then((res: any) => {
           console.log(res);
         });
@@ -44,7 +70,21 @@ const useMessage = () => {
     }
   };
 
-  return { transferMoney, getBalanceOf };
+  const allowance = async (address: any, number: any) => {
+    try {
+      const contract = new ethers.Contract(contractAddress, contractABI, account?.library?.getSigner());
+  
+      await contract
+        ?.approval(address, parseEther(String(number)))
+        .then((res: any) => {
+          console.log(res);
+        });
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  return { transferMoney, getBalanceOf, approveToken, mint, allowance };
 };
 
 export default useMessage;
